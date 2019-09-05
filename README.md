@@ -4,11 +4,11 @@
 
 ## How to install?
 
-You need Python 3.7.4 and PIL Module
+You need Python 3.7.4 and PIL Module.
 
-Get Python 3.7.4 [Python Downloads](https://www.python.org/downloads/)
+Get Python 3.7.4 - [Python Downloads](https://www.python.org/downloads/)
 
-Use this command to install PIL "pip3 install PIL"
+Use this command to install PIL: "pip3 install PIL"
 
 ## Usage
 
