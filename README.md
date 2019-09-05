@@ -1,3 +1,3 @@
 # Image2RobloxLua
-[![Build Status](https://travis-ci.com/TheOfficialSeb/Image2RobloxLua.svg?branch=master)](https://travis-ci.com/TheOfficialSeb/Image2RobloxLua/)
-[![Release](https://img.shields.io/github/release/TheOfficialSeb/Image2RobloxLua.svg)](https://github.com/TheOfficialSeb/Image2RobloxLua/releases/)
+[![Build](https://img.shields.io/badge/Build-1.0-green)
+[![Language](https://img.shields.io/badge/Language-Python%203.7.4-orange)
