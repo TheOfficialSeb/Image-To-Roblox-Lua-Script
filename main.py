@@ -11,6 +11,7 @@ PerLine = 100 / width
 
 if (width*height)>48400:
     print("[Error] The max size of a image is 220x220 or 48400 pixels!")
+    exit()
 
 if player == "@a":
     out = f"""function Image(player)
