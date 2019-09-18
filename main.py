@@ -4,6 +4,7 @@ import sys
 player = sys.argv[1]
 inputFile = sys.argv[2]
 outputFile = sys.argv[3]
+imageXSize = str(int(sys.argv[4]))
 
 image = Image.open(inputFile)
 size = width,height = image.size
@@ -26,8 +27,8 @@ function add(r,g,b,x,y,fm)
     local Frame = Instance.new("Frame",fm)
     Frame.BackgroundColor3 = Color3.new(r, g, b)
     Frame.BorderSizePixel = 0
-    Frame.Position = UDim2.new(0, x, 0, y)
-    Frame.Size = UDim2.new(0, 1, 0, 1)
+    Frame.Position = UDim2.new(0, x*{imageXSize}, 0, y*{imageXSize})
+    Frame.Size = UDim2.new(0, {imageXSize}, 0, {imageXSize})
 end"""
     out = str(out)
     
@@ -77,8 +78,8 @@ function add(r,g,b,x,y,fm)
     local Frame = Instance.new("Frame",fm)
     Frame.BackgroundColor3 = Color3.new(r, g, b)
     Frame.BorderSizePixel = 0
-    Frame.Position = UDim2.new(0, x, 0, y)
-    Frame.Size = UDim2.new(0, 1, 0, 1)
+    Frame.Position = UDim2.new(0, x*{imageXSize}, 0, y*{imageXSize})
+    Frame.Size = UDim2.new(0, {imageXSize}, 0, {imageXSize})
 end"""
     out = str(out)
     
