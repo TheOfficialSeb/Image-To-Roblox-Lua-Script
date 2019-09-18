@@ -14,5 +14,5 @@ Use this command to install PIL: "pip3 install PIL"
 
 Max image size 220x220 or 48400 pixels.
 
-Run command: "python3 main.py Username input.png output.txt"\
-For all players: "python3 main.py @a input.png output.txt"
+Run command: "python3 main.py Username input.png output.txt 1"\
+For all players: "python3 main.py @a input.png output.txt 1"
