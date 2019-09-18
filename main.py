@@ -21,7 +21,14 @@ ImageBY.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 local FrameMain = Instance.new("Frame",ImageBY)
 FrameMain.BackgroundColor3 = Color3.new(0, 0, 0)
 FrameMain.BorderSizePixel = 0
-FrameMain.Size = UDim2.new(0, {width}, 0, {height})"""
+FrameMain.Size = UDim2.new(0, {width}, 0, {height})
+function add(r,g,b,x,y,fm)
+    local Frame = Instance.new("Frame",fm)
+    Frame.BackgroundColor3 = Color3.new(r, g, b)
+    Frame.BorderSizePixel = 0
+    Frame.Position = UDim2.new(0, x, 0, y)
+    Frame.Size = UDim2.new(0, 1, 0, 1)
+end"""
     out = str(out)
     
     def NtoR(NValue):
@@ -32,11 +39,8 @@ FrameMain.Size = UDim2.new(0, {width}, 0, {height})"""
     def add(r,g,b,x,y):
         X = str(x)
         Y = str(y)
-        newStr = f"""Frame = Instance.new("Frame",FrameMain)
-Frame.BackgroundColor3 = Color3.new({r}, {g}, {b})
-Frame.BorderSizePixel = 0
-Frame.Position = UDim2.new(0, {X}, 0, {Y})
-Frame.Size = UDim2.new(0, 1, 0, 1)"""
+        newStr = f"""
+add({r}, {g}, {b}, {X}, {Y}, FrameMain)"""
         global out
         out = out + newStr
     
@@ -68,7 +72,14 @@ ImageBY.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 local FrameMain = Instance.new("Frame",ImageBY)
 FrameMain.BackgroundColor3 = Color3.new(0, 0, 0)
 FrameMain.BorderSizePixel = 0
-FrameMain.Size = UDim2.new(0, {width}, 0, {height})"""
+FrameMain.Size = UDim2.new(0, {width}, 0, {height})
+function add(r,g,b,x,y,fm)
+    local Frame = Instance.new("Frame",fm)
+    Frame.BackgroundColor3 = Color3.new(r, g, b)
+    Frame.BorderSizePixel = 0
+    Frame.Position = UDim2.new(0, x, 0, y)
+    Frame.Size = UDim2.new(0, 1, 0, 1)
+end"""
     out = str(out)
     
     def NtoR(NValue):
@@ -79,11 +90,8 @@ FrameMain.Size = UDim2.new(0, {width}, 0, {height})"""
     def add(r,g,b,x,y):
         X = str(x)
         Y = str(y)
-        newStr = f"""Frame = Instance.new("Frame",FrameMain)
-Frame.BackgroundColor3 = Color3.new({r}, {g}, {b})
-Frame.BorderSizePixel = 0
-Frame.Position = UDim2.new(0, {X}, 0, {Y})
-Frame.Size = UDim2.new(0, 1, 0, 1)"""
+        newStr = f"""
+add({r}, {g}, {b}, {X}, {Y}, FrameMain)"""
         global out
         out = out + newStr
     
