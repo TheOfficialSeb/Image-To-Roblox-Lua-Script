@@ -16,3 +16,7 @@ Max image size 185x185 or 34,225 pixels.
 
 Run command: "python3 main.py Username input.png output.txt 1"\
 For all players: "python3 main.py @a input.png output.txt 1"
+
+## Warning
+
+I don't take responsibly of what you have made with this. This means that if you get banned I'm not responsible for it.
