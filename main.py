@@ -10,8 +10,8 @@ image = Image.open(inputFile)
 size = width,height = image.size
 PerLine = 100 / width
 
-if (width*height)>48400:
-    print("[Error] The max size of a image is 220x220 or 48400 pixels!")
+if (width*height)>34225:
+    print("[Error] The max size of a image is 185x185 or 34,225 pixels!")
     exit()
 
 if player == "@a":
