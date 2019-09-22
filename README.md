@@ -1,5 +1,5 @@
 # Image To Roblox Lua Script
-![Build](https://img.shields.io/badge/Build-1.4-green)
+![Build](https://img.shields.io/badge/Build-2.0-green)
 ![Language](https://img.shields.io/badge/Language-Python%203.7.4-orange)
 
 ## How to install?
