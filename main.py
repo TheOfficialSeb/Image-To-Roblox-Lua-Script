@@ -1,5 +1,6 @@
 from PIL import Image
 import sys
+import math
 
 player = sys.argv[1]
 inputFile = sys.argv[2]
@@ -13,6 +14,12 @@ PerLine = 100 / width
 if (width*height)>40000:
     print("[Error] The max size of a image is 200x200 or 40000 pixels!")
     exit()
+
+def loadingbarSet(num):
+    newPRINT = ""
+    for i in range(num):
+        newPRINT = newPRINT+"█"
+    print("  " + str(num) + "% " + newPRINT, end="\r")
 
 if player == "@a":
     out = f"""function Image(player)
@@ -53,7 +60,7 @@ add({r}, {g}, {b}, {X}, {Y}, FrameMain)"""
             rG = str(NtoR(cRGBA[1]))
             rB = str(NtoR(cRGBA[2]))
             add(rR,rG,rB,r,c)
-        print(str(PerLine * (r+1))[0:4]+"%")
+        loadingbarSet(math.floor(float(str(PerLine * (r+1))[0:5])))
     newFile = open(outputFile,"w")
     out = out + str(f"""end
 for i,plr in pairs(game.Players:GetPlayers()) do
@@ -63,6 +70,7 @@ for i,plr in pairs(game.Players:GetPlayers()) do
 end""")
     newFile.write(out)
     newFile.close()
+    print("")
 else:
     out = f"""local player = game.Players['{player}']
 
@@ -104,7 +112,8 @@ add({r}, {g}, {b}, {X}, {Y}, FrameMain)"""
             rG = str(NtoR(cRGBA[1]))
             rB = str(NtoR(cRGBA[2]))
             add(rR,rG,rB,r,c)
-        print(str(PerLine * (r+1))[0:4]+"%")
+        loadingbarSet(math.floor(float(str(PerLine * (r+1))[0:5])))
     newFile = open(outputFile,"w")
     newFile.write(out)
     newFile.close()
+    print("")
