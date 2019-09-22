@@ -60,7 +60,7 @@ add({r}, {g}, {b}, {X}, {Y}, FrameMain)"""
             rG = str(NtoR(cRGBA[1]))
             rB = str(NtoR(cRGBA[2]))
             add(rR,rG,rB,r,c)
-        loadingbarSet(math.floor(float(str(PerLine * (r+1))[0:5])))
+        loadingbarSet(math.floor(PerLine * (r+1)))
     newFile = open(outputFile,"w")
     out = out + str(f"""end
 for i,plr in pairs(game.Players:GetPlayers()) do
@@ -112,7 +112,7 @@ add({r}, {g}, {b}, {X}, {Y}, FrameMain)"""
             rG = str(NtoR(cRGBA[1]))
             rB = str(NtoR(cRGBA[2]))
             add(rR,rG,rB,r,c)
-        loadingbarSet(math.floor(float(str(PerLine * (r+1))[0:5])))
+        loadingbarSet(math.floor(PerLine * (r+1)))
     newFile = open(outputFile,"w")
     newFile.write(out)
     newFile.close()
