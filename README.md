@@ -21,4 +21,4 @@ For all players: "python3 main.py @a input.png output.txt 1"
 
 I don't take responsibly of what you have made with this. This means that if you get banned I'm not responsible for it.
 
-If it gets an error make sure you use this to format that image! [Resize & Format Image Website](https://resizeimage.net/)
+If it gets an error make sure you use this to format that image! - [Resize & Format Image Website](https://resizeimage.net/)
