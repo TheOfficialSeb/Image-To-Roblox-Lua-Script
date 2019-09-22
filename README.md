@@ -1,5 +1,5 @@
 # Image To Roblox Lua Script
-![Build](https://img.shields.io/badge/Build-2.0-green)
+![Build](https://img.shields.io/badge/Build-2.1-green)
 ![Language](https://img.shields.io/badge/Language-Python%203.7.4-orange)
 
 ## How to install?
@@ -20,3 +20,5 @@ For all players: "python3 main.py @a input.png output.txt 1"
 ## Warning
 
 I don't take responsibly of what you have made with this. This means that if you get banned I'm not responsible for it.
+
+If it gets an error make sure you use this to format that image! [Resize & Format Image Website](https://resizeimage.net/)
