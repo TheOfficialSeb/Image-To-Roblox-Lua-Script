@@ -52,15 +52,15 @@ add({r}, {g}, {b}, {X}, {Y}, FrameMain)"""
         global out
         out = out + newStr
     
-    for r in range(width):
-        for c in range(height):
-            cor = x,y = r,c
+    for c in range(width):
+        for r in range(height):
+            cor = x,y = c,r
             cRGBA = image.getpixel(cor)
             rR = str(NtoR(cRGBA[0]))
             rG = str(NtoR(cRGBA[1]))
             rB = str(NtoR(cRGBA[2]))
-            add(rR,rG,rB,r,c)
-        loadingbarSet(math.floor(PerLine * (r+1)))
+            add(rR,rG,rB,c,r)
+        loadingbarSet(math.floor(PerLine * (c+1)))
     newFile = open(outputFile,"w")
     out = out + str(f"""end
 for i,plr in pairs(game.Players:GetPlayers()) do
@@ -104,15 +104,15 @@ add({r}, {g}, {b}, {X}, {Y}, FrameMain)"""
         global out
         out = out + newStr
     
-    for r in range(width):
-        for c in range(height):
-            cor = x,y = r,c
+    for c in range(width):
+        for r in range(height):
+            cor = x,y = c,r
             cRGBA = image.getpixel(cor)
             rR = str(NtoR(cRGBA[0]))
             rG = str(NtoR(cRGBA[1]))
             rB = str(NtoR(cRGBA[2]))
-            add(rR,rG,rB,r,c)
-        loadingbarSet(math.floor(PerLine * (r+1)))
+            add(rR,rG,rB,c,r)
+        loadingbarSet(math.floor(PerLine * (c+1)))
     newFile = open(outputFile,"w")
     newFile.write(out)
     newFile.close()
