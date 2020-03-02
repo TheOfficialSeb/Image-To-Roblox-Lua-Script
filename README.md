@@ -1,5 +1,5 @@
 # Image To Roblox Lua Script
-![Build](https://img.shields.io/badge/Build-2.1-green)
+![Build](https://img.shields.io/badge/Build-3.0-green)
 ![Language](https://img.shields.io/badge/Language-Python%203.7.4-orange)
 
 ## How to install?
@@ -14,8 +14,8 @@ Use this command to install PIL: "pip3 install PIL"
 
 Max image size 200x200 or 40,000 pixels.
 
-Run command: "python3 main.py Username input.png output.txt 1"\
-For all players: "python3 main.py @a input.png output.txt 1"
+Run command: "python3 __init__.py Username input.png output.txt 1"\
+For all players: "python3 __init__.py @a input.png output.txt 1"
 
 ## Warning
 
