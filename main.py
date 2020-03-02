@@ -2,118 +2,41 @@ from PIL import Image
 import sys
 import math
 
-player = sys.argv[1]
-inputFile = sys.argv[2]
-outputFile = sys.argv[3]
-imageXSize = str(int(sys.argv[4]))
+inputFile = sys.argv[1]
+outputFile = sys.argv[2]
+imageXSize = str(int(sys.argv[3]))
 
-image = Image.open(inputFile)
+image = Image.open(inputFile).convert(mode="RGB")
 size = width,height = image.size
 PerLine = 100 / width
+
+ModuleCode = f'local UI = Instance.new("ScreenGui",game:GetService("Players").LocalPlayer.PlayerGui)\nUI.Name = game:GetService("HttpService"):GenerateGUID(false)\nlocal ImageFrame = Instance.new("Frame",UI)\nImageFrame.Name = "ImageFrame"\nImageFrame.BorderSizePixel = 0\nImageFrame.Size = UDim2.fromOffset({width-1}*{imageXSize},{height-1}*{imageXSize})\nfunction NewPixel(self,Color,Position,Size)\n	local Pixel = Instance.new("Frame",self)\n	Pixel.Name = string.format("%dx%d",Position.X,Position.Y)\n	Pixel.Position = UDim2.fromOffset((Position.X*Size)-Size,(Position.Y*Size)-Size)\n	Pixel.Size = UDim2.fromOffset(Size,Size)\n	Pixel.BackgroundColor3 = Color\n	Pixel.BorderSizePixel = 0\nend'
 
 if (width*height)>40000:
     print("[Error] The max size of a image is 200x200 or 40000 pixels!")
     exit()
 
+class RobloxENV:
+    def V2(x,y):
+        return f"Vector2.new({x},{y})"
+    def C3(r,g,b):
+        return f"Color3.fromRGB({r},{g},{b})"
+
 def loadingbarSet(num):
     newPRINT = ""
-    for i in range(num):
+    for INDEX in range(num):
         newPRINT = newPRINT+"█"
     print("  " + str(num) + "% " + newPRINT, end="\r")
 
-if player == "@a":
-    out = f"""function Image(player)
-local ImageBY = Instance.new("ScreenGui",player:WaitForChild("PlayerGui"))
-ImageBY.Name = "ImageBY"
-ImageBY.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-local FrameMain = Instance.new("Frame",ImageBY)
-FrameMain.BackgroundColor3 = Color3.new(0, 0, 0)
-FrameMain.BorderSizePixel = 0
-FrameMain.Size = UDim2.new(0, {width}, 0, {height})
-function add(r,g,b,x,y,fm)
-    local Frame = Instance.new("Frame",fm)
-    Frame.BackgroundColor3 = Color3.new(r, g, b)
-    Frame.BorderSizePixel = 0
-    Frame.Position = UDim2.new(0, x*{imageXSize}, 0, y*{imageXSize})
-    Frame.Size = UDim2.new(0, {imageXSize}, 0, {imageXSize})
-end"""
-    out = str(out)
-    
-    def NtoR(NValue):
-        Count = 1 / 255
-        RValue = Count * NValue
-        return RValue
-
-    def add(r,g,b,x,y):
-        X = str(x)
-        Y = str(y)
-        newStr = f"""
-add({r}, {g}, {b}, {X}, {Y}, FrameMain)"""
-        global out
-        out = out + newStr
-    
-    for c in range(width):
-        for r in range(height):
-            cor = x,y = c,r
-            cRGBA = image.getpixel(cor)
-            rR = str(NtoR(cRGBA[0]))
-            rG = str(NtoR(cRGBA[1]))
-            rB = str(NtoR(cRGBA[2]))
-            add(rR,rG,rB,c,r)
-        loadingbarSet(math.floor(PerLine * (c+1)))
-    newFile = open(outputFile,"w")
-    out = out + str(f"""end
-for i,plr in pairs(game.Players:GetPlayers()) do
-    Image(plr)
-    print(plr.Name)
-    wait(1)
-end""")
-    newFile.write(out)
-    newFile.close()
-    print("")
-else:
-    out = f"""local player = game.Players['{player}']
-
-local ImageBY = Instance.new("ScreenGui",player:WaitForChild("PlayerGui"))
-ImageBY.Name = "ImageBY"
-ImageBY.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-local FrameMain = Instance.new("Frame",ImageBY)
-FrameMain.BackgroundColor3 = Color3.new(0, 0, 0)
-FrameMain.BorderSizePixel = 0
-FrameMain.Size = UDim2.new(0, {width}, 0, {height})
-function add(r,g,b,x,y,fm)
-    local Frame = Instance.new("Frame",fm)
-    Frame.BackgroundColor3 = Color3.new(r, g, b)
-    Frame.BorderSizePixel = 0
-    Frame.Position = UDim2.new(0, x*{imageXSize}, 0, y*{imageXSize})
-    Frame.Size = UDim2.new(0, {imageXSize}, 0, {imageXSize})
-end"""
-    out = str(out)
-    
-    def NtoR(NValue):
-        Count = 1 / 255
-        RValue = Count * NValue
-        return RValue
-
-    def add(r,g,b,x,y):
-        X = str(x)
-        Y = str(y)
-        newStr = f"""
-add({r}, {g}, {b}, {X}, {Y}, FrameMain)"""
-        global out
-        out = out + newStr
-    
-    for c in range(width):
-        for r in range(height):
-            cor = x,y = c,r
-            cRGBA = image.getpixel(cor)
-            rR = str(NtoR(cRGBA[0]))
-            rG = str(NtoR(cRGBA[1]))
-            rB = str(NtoR(cRGBA[2]))
-            add(rR,rG,rB,c,r)
-        loadingbarSet(math.floor(PerLine * (c+1)))
-    newFile = open(outputFile,"w")
-    newFile.write(out)
-    newFile.close()
-    print("")
+for X in range(width):
+    for Y in range(height):
+        XY = X,Y
+        Color = image.getpixel(XY)
+        Roblox_Color = RobloxENV.C3(Color[0],Color[1],Color[2])
+        Roblox_Vector2 = RobloxENV.V2(X,Y)
+        ModuleCode = ModuleCode + f"\nNewPixel(ImageFrame,{Roblox_Color},{Roblox_Vector2},{imageXSize})"
+    loadingbarSet(math.floor(PerLine * (X+1)))
+newFile = open(outputFile,"w")
+newFile.write(ModuleCode)
+newFile.close()
+print("")
